@@ -5,9 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -28,6 +31,30 @@ public class MainActivity extends AppCompatActivity {
         });
 
         DatabaseHandler db = new DatabaseHandler(this);
+
+        /**
+         * CRUD
+         * */
+        // Inserting Contacts
+        Log.d("Insert: ", "Inserting ..");
+        db.addContact(new Contact(111, "Alberto", "Bernard", "Alberto@gmail.com","228338102"));
+        db.addContact(new Contact(122, "Simone", "Santos Silva", "Simone@gmail.com","152760963"));
+        db.addContact(new Contact(123, "Maria", "Nunes", "Maria@gmail.com","831787752"));
+        db.addContact(new Contact(124, "João", "Oliveira", "Joao@gmail.com","166909064"));
+        db.addContact(new Contact(125, "Marina", "José", "Marina@gmail.com","812531884"));
+        db.addContact(new Contact(12647, "Almir", "Roberto", "Almir@gmail.com","372909549"));
+
+
+        // Reading all contacts
+        Log.d("Reading: ", "Reading all contacts..");
+        List<Contact> contacts = db.getAllContacts();
+
+        for (Contact cn : contacts) {
+            String log = "Id: "+cn.getContact_id()+" ,Name: " + cn.getFirst_name() + " ,Phone: " + cn.getPhone();
+            // Writing Contacts to log
+            Log.d("Name: ", log);
+
+        }
 
     }
 
