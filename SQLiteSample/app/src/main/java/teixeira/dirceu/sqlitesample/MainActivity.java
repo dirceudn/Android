@@ -26,6 +26,9 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        DatabaseHandler db = new DatabaseHandler(this);
+
     }
 
     @Override
